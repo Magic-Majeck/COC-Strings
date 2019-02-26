@@ -1,0 +1,33 @@
+using System;
+
+class Solution
+{
+    static void Main(string[] args)
+    {
+        string S = Console.ReadLine();
+        char lastLetter = 'º';
+        
+        int repeats = 0;
+        bool sameWord= false;
+        
+        Console.Error.WriteLine("   string = " + S);
+        
+        foreach(char c in S)
+        {
+            if(c == ' ')
+            {
+                sameWord = false;
+            }
+            
+            
+            if(char.ToLower(c) == char.ToLower(lastLetter) && sameWord == false)
+            {
+                repeats++;
+                sameWord = true;
+            }
+            Console.Error.WriteLine("   char = {0}, lastLetter = {1}, sameWord = {2}", c, lastLetter, sameWord);
+            lastLetter = c;
+        }
+        Console.WriteLine(repeats);
+    }
+}
