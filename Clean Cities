@@ -1,0 +1,50 @@
+using System;
+
+class Solution
+{
+    static void Main(string[] args)
+    {
+        int NumCleanCities = int.Parse(Console.ReadLine());
+        
+        string[] cleanCities = new string[NumCleanCities];
+        for(int i = 0; i < NumCleanCities; i++)
+        {
+            cleanCities[i] = Console.ReadLine();
+        }
+        
+        int NumDirtyCities = int.Parse(Console.ReadLine());
+        for(int i = 0; i < NumDirtyCities; i++)
+        {
+            string uncleanedCity = Console.ReadLine();
+            
+            int index = -1;
+            for(int j = 0; j < NumCleanCities; j++)
+            {
+                string lowerDirty = uncleanedCity.ToLower();
+                string lowerClean = cleanCities[j].ToLower();
+                
+                if(NoSpaces(lowerDirty) == NoSpaces(lowerClean))
+                {
+                    index = j;
+                    break;
+                }
+            }
+            
+            Console.WriteLine(cleanCities[index]);
+        }
+    }
+    
+    public static string NoSpaces(string s)
+    {
+        string newS = "";
+        for(int i = 0; i < s.Length; i++)
+        {
+            if(s[i] != ' ')
+            {
+                newS += s[i];
+            }
+        }
+        
+        return newS;
+    }
+}
