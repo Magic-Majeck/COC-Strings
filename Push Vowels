@@ -1,0 +1,42 @@
+using System;
+
+class Solution
+{
+    static void Main(string[] args)
+    {
+        string line = Console.ReadLine();
+        
+        string vowels = "";
+        for(int i = 0; i < line.Length; i++)
+        {
+            char c = line[i];
+            if("AEIOU".Contains(c.ToString()))
+            {
+                vowels += c;
+            }
+        }
+        
+        int ctr = 0;
+        string pushedLine = "";
+        for(int i = 0; i < line.Length; i++)
+        {
+            char c = line[i];
+            if("AEIOU".Contains(c.ToString()))
+            {
+                if(ctr-1 < 0)
+                {
+                    c = vowels[vowels.Length-1];
+                }
+                else
+                {
+                    c = vowels[ctr-1];
+                }
+                ctr++;
+            }
+            
+            pushedLine += c;
+        }
+        
+        Console.WriteLine(pushedLine);
+    }
+}
