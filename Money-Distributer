@@ -1,1 +1,48 @@
+using System;
 
+class Solution
+{
+    static void Main(string[] args)
+    {
+        string[] notesString = Console.ReadLine().Split(' ');
+        
+        int[] notes = new int[notesString.Length];
+        for(int i = 0; i < notesString.Length; i++)
+        {
+            notes[i] = int.Parse(notesString[i]);
+        }
+        
+        Array.Sort(notes);
+        Array.Reverse(notes);
+        
+        
+        int total = int.Parse(Console.ReadLine());
+        
+        int ctr = 0;
+        string[] money = new string[notes.Length];
+        for(int i = 0; i < notes.Length; i++)
+        {
+            int noteAmount = 0;
+            while(total >= notes[i])
+            {
+                total -= notes[i];
+                noteAmount++;
+            }
+            
+            money[i] = noteAmount + "x" + notes[i];
+        }
+        
+        
+        string valueString = "";
+        for(int i = 0; i < money.Length; i++)
+        {
+            if(money[i][0] != '0')
+            {
+                valueString += (valueString != "") ? " ":"";
+                valueString += money[i];
+            }
+        }
+        
+        Console.WriteLine(valueString);
+    }
+}
